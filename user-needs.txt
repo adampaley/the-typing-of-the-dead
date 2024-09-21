@@ -1,0 +1,43 @@
+As a user, I want a landing page when I arrive on the website, so I know I am in the right place
+As a user, I want clear instructions
+As a user, I want the game to begin when I hit a play button
+As a user, I want to type words to cause game action
+As a user, I want the words I need to type appended to my opponent(s)
+As a user, I want visual feedback that successfully typing my word defeats my opponent
+As a user, I want different words appearing per level
+As a user, I want a word to only be used once per level or playthrough
+As a user, I want the option to quit the game
+As a user, I want a time limit to a level
+As a user, I want the difficulty to increase if there are more levels
+As a user, I want a clear message indicating that a level has been won
+As a user, I want points for completing a level sooner
+As a user, I want an avatar representing myself
+
+
+/* Project Planning (JS)
+
+If user selects an instructions button, instructions pop-up on screen and can be cleared away
+
+If user selects play, initialize board with player and first opponent with word appended to opponent
+
+Declare constants with word lists for different levels 
+    1) 15 GED words
+    2) 30 SAT words
+    3) 50 GRE words
+    4) all the Scripps winning words - https://en.wiktionary.org/wiki/Appendix:Scripps_winning_words
+    5) stretch - fetch random word api 
+
+Timer/Countdown begins when user starts typing
+
+each opponent has own interval
+
+new opponents added at intervals 
+
+(up to:
+level 1: 10 zombies
+level 2: 20 zombies
+level 3: 30 zombies
+level 4: 40 zombies
+)
+
+user has 3 lives, needs to 
