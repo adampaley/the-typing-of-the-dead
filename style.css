@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Eater&family=Fascinate+Inline&family=Playwrite+DE+Grund:wght@100..400&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    /* background-image: url("./assets/zombie-graveyard.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; */
+}
+
+#game-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-title {
+    font-family: "Eater", serif;
+    font-weight: 400;
+    font-size: 500px
+    font-style: normal;
+    color: rgba(244, 244, 33, 0.865);
+    text-shadow: -1px 1px 0 #000,
+    1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000;
+}
+
+#zombie-graveyard {
+    width: 896px;
+    height: auto;
+    z-index: 0;
+}
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 353px
+}
+
+/* need this to toggle on when game has begun, replacing the play button */
+.reset { 
+    display: none;
+}
