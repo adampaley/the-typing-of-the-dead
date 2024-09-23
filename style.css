@@ -6,22 +6,46 @@
 
 body {
     margin: 0;
-    /* background-image: url("./assets/zombie-graveyard.jpeg");
+    height: 100vh;
+    width: 100%;
+    background-image: url("./assets/zombie-graveyard.jpeg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center; */
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+
 }
 
-#game-display {
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+header {
+    outline: 2px solid pink;
+    height: 15%;
+    width: 69%;
+    margin-left: 15.55%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    text-align: center;
     justify-content: center;
+
 }
 
 #game-title {
     font-family: "Eater", serif;
     font-weight: 400;
-    font-size: 500px
+    font-size: 60px;
     font-style: normal;
     color: rgba(244, 244, 33, 0.865);
     text-shadow: -1px 1px 0 #000,
@@ -30,18 +54,85 @@ body {
     -1px -1px 0 #000;
 }
 
-#zombie-graveyard {
-    width: 896px;
-    height: auto;
-    z-index: 0;
+#empty-space {
+    outline: 2px solid rgb(206, 192, 255);
+    height: 40%;
+    width: 100%;
 }
+
+#game-display {
+    outline: 2px solid rgb(192, 255, 198);
+    height: 40%;
+    width: 69%;
+    margin-left: 15.55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.zombie {
+    display: flex;
+    flex-direction: column;
+}
+
+.zombie-render {
+    width: 100px;
+    height: auto
+}
+
+.zombie-text {
+    background-color: aliceblue;
+    color: black
+}
+
+/* #interactive-components {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+} */
+
+#player-components {
+    outline: 2px solid rgb(255, 228, 192);
+    height: 5%;
+    width: 69%;
+    margin-left: 15.55%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: baseline,;
+}
+
+
+
 .game-buttons {
+    outline: 2px solid rgb(255, 192, 248);
+    height: 3%;
+    width: 69%;
+    margin-left: 15.55%;
     display: flex;
     justify-content: center;
     gap: 353px
+}
+
+#player {
+    font-size: 1.5rem;
+    padding: 10px;
 }
 
 /* need this to toggle on when game has begun, replacing the play button */
 .reset { 
     display: none;
 }
+
+
+/* // parent container (same DIV), add a position: relative to parent container 
+// if you absolute position the children of a parent container and the parent container is relatively position, will be absolutely conditioned relative to the browser
+// z-index, with layering everything has by default a zero index. Where it gets wonky is things like with fixed positions.
+
+// can be weird with position absolute, position fixed. Also override the zero base level.  
+
+
+*/
+
+/* user a header for title, div/main/section for gameboard, and footer for content */
