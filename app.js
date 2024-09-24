@@ -74,25 +74,12 @@ const killZombie = () => {
 
 }
 
-// initialize game
-const init = () => {
-    defeatedZombieWords = []
-    playerLevel = 1
-    zombieWord = ""
-    clearInterval(gameTimerID)
-    timer = 30
-    timerEl.textContent = `Time: ${timer}s`
-    score = 0
-    scoreEl.textContent = `Score: ${score}`
-    if (document.querySelector(".zombie")) zombieCon.removeChild(document.querySelector(".zombie"))
-}
-init()
 // start timer
 
 const startTimer = () => {
     gameTimerID = setInterval(() => {
         if (timer <= 0) {
-            clearInterval(gameTimer)
+            clearInterval(gameTimerID)
             removeZombie()
             renderOutcome()
         }  else {
@@ -123,7 +110,20 @@ const renderOutcome = () => {
 const handleReset = () => {
     document.querySelector(".reset").classList.add("invisible")
     document.querySelector(".play").classList.remove("invisible")
-    init()
+    playerLevel = 1
+    defeatedZombieWords.push(zombieWord)
+    zombieWord = ""
+    defeatedZombieWords.forEach((word) => { 
+        if(!wordList.includes(word)) wordList.push(word)
+    })
+    clearInterval(gameTimerID)
+    timer = 30
+    timerEl.textContent = `Time: ${timer}s`
+    score = 0
+    scoreEl.textContent = `Score: ${score}`
+    playerEl.value = ""
+    titleEl.textContent = "The Typing of the Dead"
+    if (document.querySelector(".zombie")) zombieCon.removeChild(document.querySelector(".zombie"))
 }
 
 // event delegation for buttons
