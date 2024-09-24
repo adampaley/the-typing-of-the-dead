@@ -54,10 +54,48 @@ header {
     -1px -1px 0 #000;
 }
 
-#empty-space {
+#information-space {
     outline: 2px solid rgb(206, 192, 255);
     height: 40%;
-    width: 100%;
+    width: 69%;
+    margin-left: 15.55%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 25%;
+    left: 25%;
+    transform: (-50%, -50%);
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    color: black;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 #game-display {
@@ -103,8 +141,6 @@ header {
     align-items: baseline,;
 }
 
-
-
 .game-buttons {
     outline: 2px solid rgb(255, 192, 248);
     height: 3%;
@@ -112,7 +148,13 @@ header {
     margin-left: 15.55%;
     display: flex;
     justify-content: center;
-    gap: 353px
+    gap: 353px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.game-buttons:hover,
+.game-buttons:focus {
+    cursor: pointer; /* not sure why this is not working */
 }
 
 #player {

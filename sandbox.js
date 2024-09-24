@@ -77,26 +77,10 @@ const completeLevel = () => {
 completeLevel()
 console.log(playerLevel)
 
-const init = () => {
-    playerLevel = 0
-    score = 0
-    playerEl.value = ""
-    // defeatedZombieWords.forEach((word) => { // adding these lines as a failsafe in case reseting without reloading does not put the words back into list
-    //     wordList.push(word)
-    // })
-    defeatedZombieWords = []
-}
 
-const handleReset = () => { // add event after building out html, cached elements, and dom
 
-    init()
-}
-handleReset()
-console.log(defeatedZombieWords)
 console.log(wordList)
-// if I reset the game using a button, will the words return? 
-// as the zombies are defeated, might need to push them in an array of completed words and push(pop) them in at reset
-// also to clear that array when going to the next level
+
 
 const handlePlay = () => {
     getRandomWord()
