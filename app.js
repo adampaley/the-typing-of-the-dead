@@ -5,6 +5,7 @@ const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
 const wordList = wordObj.vocab
 let zombieWord = ""
 let timer = 60
+let gameTimerID
 let score = 0
 
 const buttonEl = document.querySelectorAll(".game-buttons")
@@ -74,11 +75,10 @@ const killZombie = () => {
 
 }
 
-
 // start timer
 
 const startTimer = () => {
-    const gameTimer = setInterval(() => {
+    gameTimerID = setInterval(() => {
         if (timer <= 0) {
             clearInterval(gameTimer)
             removeZombie()
@@ -99,7 +99,7 @@ const handlePlay = () => {
 } 
 
 const renderOutcome = () => {
-    defeatedZombieWords.length >= winCondition ? titleEl.textContent = "You Win!" && clearInterval(startTimer)
+    defeatedZombieWords.length >= winCondition ? (titleEl.textContent = "You Win!", clearInterval(gameTimerID))
     : timer <= 0 ? titleEl.textContent = "You Lose"
     : spawnZombie()
 }
