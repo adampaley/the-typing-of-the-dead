@@ -1,10 +1,10 @@
-const defeatedZombieWords = []
-const winCondition = 1 // # of Zombie Words in defeatedZombieWords
+let defeatedZombieWords = []
+const winCondition = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
 let playerLevel = 1
 const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
 const wordList = wordObj.vocab
 let zombieWord = ""
-let timer = 60
+let timer = 30
 let gameTimerID
 let score = 0
 
@@ -14,7 +14,6 @@ const playerEl = document.querySelector("#player")
 const scoreEl = document.querySelector("#score")
 const titleEl = document.querySelector("#game-title")
 const timerEl = document.querySelector("#timer")
-
 
 // select random word from wordList
 
@@ -75,6 +74,19 @@ const killZombie = () => {
 
 }
 
+// initialize game
+const init = () => {
+    defeatedZombieWords = []
+    playerLevel = 1
+    zombieWord = ""
+    clearInterval(gameTimerID)
+    timer = 30
+    timerEl.textContent = `Time: ${timer}s`
+    score = 0
+    scoreEl.textContent = `Score: ${score}`
+    if (document.querySelector(".zombie")) zombieCon.removeChild(document.querySelector(".zombie"))
+}
+init()
 // start timer
 
 const startTimer = () => {
@@ -96,14 +108,23 @@ const startTimer = () => {
 const handlePlay = () => {
     startTimer()
     spawnZombie()
+    document.querySelector(".reset").classList.remove("invisible")
+    document.querySelector(".play").classList.add("invisible")
+
 } 
 
 const renderOutcome = () => {
-    defeatedZombieWords.length >= winCondition ? (titleEl.textContent = "You Win!", clearInterval(gameTimerID))
+    defeatedZombieWords.length >= winCondition[0] ? (titleEl.textContent = "You Win!", clearInterval(gameTimerID))
     : timer <= 0 ? titleEl.textContent = "You Lose"
     : spawnZombie()
 }
 
+// Reset to initial settings
+const handleReset = () => {
+    document.querySelector(".reset").classList.add("invisible")
+    document.querySelector(".play").classList.remove("invisible")
+    init()
+}
 
 // event delegation for buttons
 
@@ -122,7 +143,7 @@ const handleButtonClicks = (event) => {
             console.log("handleSettings()")
             break
         case button.classList.contains("reset"):
-            console.log("handleReset()")
+            handleReset()
             break
         default:
             return

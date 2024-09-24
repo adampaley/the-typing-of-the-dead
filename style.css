@@ -121,7 +121,7 @@ header {
 }
 
 /* need this to toggle on when game has begun, replacing the play button */
-.reset { 
+.invisible {
     display: none;
 }
 
