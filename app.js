@@ -1,19 +1,22 @@
-let defeatedZombieWords = []
+const defeatedZombieWords = []
+const winCondition = 1 // # of Zombie Words in defeatedZombieWords
 let playerLevel = 1
-const winLevel = [10, 20, 30, 40]
-// pull word options from bank by level
 const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
-let wordList = wordObj.vocab
-let score = 0
+const wordList = wordObj.vocab
 let zombieWord = ""
-
+let timer = 60
+let score = 0
 
 const buttonEl = document.querySelectorAll(".game-buttons")
 const zombieCon = document.querySelector(".zombie-container")
 const playerEl = document.querySelector("#player")
 const scoreEl = document.querySelector("#score")
+const titleEl = document.querySelector("#game-title")
+const timerEl = document.querySelector("#timer")
 
-// randomize word selection, remove word from array so it does not generate again
+
+// select random word from wordList
+
 const getRandomWord = () => {
     if (wordList.length === 0) {
         return null
@@ -24,87 +27,85 @@ const getRandomWord = () => {
     return zombieWord
 }
 
+// add Zombie to screen, append zombieWord to zombieImg
 const spawnZombie = () => {
-    setInterval(() => {
-        const zombieDiv = document.createElement("div")
-        zombieDiv.classList.add("zombie")
+    const zombieDiv = document.createElement("div")
+    zombieDiv.classList.add("zombie")
 
-        const zombieImg = document.createElement("img")
-        zombieImg.classList.add("zombie-render")
-        zombieImg.src = "./assets/generic-zombie-sprite.webp"
+    const zombieImg = document.createElement("img")
+    zombieImg.classList.add("zombie-render")
+    zombieImg.src = "./assets/generic-zombie-sprite.webp"
 
-        zombieWord = getRandomWord()
-        const zombieText = document.createElement("div")
-        zombieText.classList.add("zombie-text")
-        zombieText.textContent = zombieWord
+    zombieWord = getRandomWord()
+    zombieDiv.setAttribute('data-word', zombieWord);
 
-        zombieDiv.setAttribute('data-word', zombieWord);
+    const zombieText = document.createElement("div")
+    zombieText.classList.add("zombie-text")
+    zombieText.textContent = zombieWord
 
-        zombieDiv.appendChild(zombieImg)
-        zombieDiv.appendChild(zombieText)
-        zombieCon.appendChild(zombieDiv)
-    }, 6000)
+    zombieDiv.appendChild(zombieImg)
+    zombieDiv.appendChild(zombieText)
+    zombieCon.appendChild(zombieDiv)
 }
-spawnZombie()
-console.log(wordList)
 
 
+
+// remove zombie elements from screen
+const removeZombie = () => {
+    const zombieEls = document.querySelectorAll(".zombie")
+    zombieEls.forEach((zombie) => {
+        if (zombie.getAttribute('data-word') === zombieWord) {
+            zombie.remove()
+            playerEl.value = ""
+        }
+    })
+}
+
+// when zombie text is precisely matched in input, remove element and increase score
 const killZombie = () => {
-    const firepower = playerEl.value
+    const firepower = playerEl.value.trim()
     if (firepower === zombieWord) {
         score++
         scoreEl.textContent = `Score: ${score}`
         defeatedZombieWords.push(zombieWord)
+        removeZombie()
+        renderOutcome()
     }
 
-    const zombieElements = document.querySelectorAll('.zombie');
-    zombieElements.forEach(zombie => {
-        if (zombie.getAttribute('data-word') === zombieWord) {
-            zombie.remove(); // Remove the zombie element
+}
+
+
+// start timer
+
+const startTimer = () => {
+    const gameTimer = setInterval(() => {
+        if (timer <= 0) {
+            clearInterval(gameTimer)
+            removeZombie()
+            renderOutcome()
+        }  else {
+            timer --
         }
-    });
+        timerEl.textContent = `Time: ${timer}s`
+    }, 1000)
+    return timer
 }
 
-
-killZombie()
-console.log(defeatedZombieWords)
-
-const completeLevel = () => {
-    if (defeatedZombieWords.length >= winLevel[playerLevel - 1]) {
-        return playerLevel++
-    }
-}
-completeLevel()
-console.log(playerLevel)
-
-const init = () => {
-    playerLevel = 0
-    score = 0
-    playerEl.value = ""
-    // defeatedZombieWords.forEach((word) => { // adding these lines as a failsafe in case reseting without reloading does not put the words back into list
-    //     wordList.push(word)
-    // })
-    defeatedZombieWords = []
-}
-
-const handleReset = () => { // add event after building out html, cached elements, and dom
-
-    init()
-}
-handleReset()
-console.log(defeatedZombieWords)
-console.log(wordList)
-// if I reset the game using a button, will the words return? 
-// as the zombies are defeated, might need to push them in an array of completed words and push(pop) them in at reset
-// also to clear that array when going to the next level
+// When play is clicked, start time and generate zombie
 
 const handlePlay = () => {
-    getRandomWord()
-    killZombie()
-    // completeLevel()
-    handlePlay()
+    startTimer()
+    spawnZombie()
+} 
+
+const renderOutcome = () => {
+    defeatedZombieWords.length >= winCondition ? titleEl.textContent = "You Win!" && clearInterval(startTimer)
+    : timer <= 0 ? titleEl.textContent = "You Lose"
+    : spawnZombie()
 }
 
+
+// event delegation for buttons
 
 const handleButtonClicks = (event) => {
     const button = event.target
@@ -112,7 +113,7 @@ const handleButtonClicks = (event) => {
 
     switch (true) {
         case button.classList.contains("play"):
-            console.log("handlePlay()")
+            handlePlay()
             break
         case button.classList.contains("instructions"):
             console.log("handleInstructions()")
