@@ -8,6 +8,7 @@ body {
     margin: 0;
     height: 100vh;
     width: 100%;
+    background-color: #1a7576;
     background-image: url("./assets/zombie-graveyard.jpeg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -107,6 +108,10 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.zombie-container {
+    position: relative;
 }
 
 .zombie {

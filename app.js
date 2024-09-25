@@ -46,8 +46,20 @@ const spawnZombie = () => {
 
     zombieDiv.appendChild(zombieImg)
     zombieDiv.appendChild(zombieText)
+
+    const zombieConDim = zombieCon.getBoundingClientRect()
+
+    const zombieConDimX = Math.random() * (zombieConDim.width) + (Math.random() > 0.5 ? 200: -200)
+    const zombieConDimY = Math.random() * (zombieConDim.height) + (Math.random() > 0.5 ? 200: -200)
+
+    const zombieX = Math.min(Math.max(zombieConDimX, 0), zombieConDim.width - 200)
+    const zombieY = Math.min(Math.max(zombieConDimY, 0), zombieConDim.height - 200)
+
+    zombieDiv.style.position = "absolute"
+    zombieDiv.style.left = `${zombieX}px`
+    zombieDiv.style.top = `${zombieY}px`
+
     zombieCon.appendChild(zombieDiv)
-    console.log(zombieDiv)
 }
 
 // const zombieHorde = setInterval(() => {
@@ -127,6 +139,7 @@ const handleReset = () => {
     defeatedZombieWords.forEach((word) => { 
         if(!wordList.includes(word)) wordList.push(word)
     })
+    defeatedZombieWords = []
     clearInterval(gameTimerID)
     timer = 30
     timerEl.textContent = `Time: ${timer}s`
