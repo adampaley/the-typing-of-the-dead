@@ -112,6 +112,12 @@ header {
 .zombie {
     display: flex;
     flex-direction: column;
+  }
+
+.position {
+    animation-name: slide;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
 }
 
 .zombie-render {
@@ -162,11 +168,28 @@ header {
     padding: 10px;
 }
 
-/* need this to toggle on when game has begun, replacing the play button */
 .invisible {
     display: none;
 }
 
+@keyframes slide {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(-10%, 40%, 0);
+
+    }
+    50% {
+      transform: translate3d(60%, -50%, 0);
+    }
+    75% {
+      transform: translate3d(-60%, 20%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
 
 /* // parent container (same DIV), add a position: relative to parent container 
 // if you absolute position the children of a parent container and the parent container is relatively position, will be absolutely conditioned relative to the browser

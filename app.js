@@ -31,7 +31,7 @@ const getRandomWord = () => {
 // add Zombie to screen, append zombieWord to zombieImg
 const spawnZombie = () => {
     const zombieDiv = document.createElement("div")
-    zombieDiv.classList.add("zombie")
+    zombieDiv.classList.add("zombie", "position")
 
     const zombieImg = document.createElement("img")
     zombieImg.classList.add("zombie-render")
@@ -47,6 +47,7 @@ const spawnZombie = () => {
     zombieDiv.appendChild(zombieImg)
     zombieDiv.appendChild(zombieText)
     zombieCon.appendChild(zombieDiv)
+    console.log(zombieDiv)
 }
 
 // const zombieHorde = setInterval(() => {

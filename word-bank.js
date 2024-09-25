@@ -9,5 +9,3 @@ const wordBank = [
     { level: 3, vocab: level3Words},
     { level: 4, vocab: level4Words},
 ]
-
-console.log(level1Words.length)
