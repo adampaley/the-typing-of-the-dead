@@ -24,7 +24,7 @@ const getRandomWord = () => {
     return zombieWord
 }
 
-const spawnZombie = () => {
+const spawnZombieHorde = () => {
     setInterval(() => {
         const zombieDiv = document.createElement("div")
         zombieDiv.classList.add("zombie")

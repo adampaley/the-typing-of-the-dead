@@ -127,7 +127,7 @@ header {
 
 .zombie-render {
     width: 100px;
-    height: auto
+    height: auto /* 158.76px */
 }
 
 .zombie-text {

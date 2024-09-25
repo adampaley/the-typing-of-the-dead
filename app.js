@@ -1,13 +1,14 @@
 let defeatedZombieWords = []
 const winCondition = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
-let playerLevel = 1
+let playerLevel = 2
 const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
 const wordList = wordObj.vocab
 let zombieWord = ""
 let timer = 30
 let timeBonus = 3
 let gameTimerID
-let score = 0
+let score = defeatedZombieWords.length
+
 
 const buttonEl = document.querySelectorAll(".game-buttons button")
 const zombieCon = document.querySelector(".zombie-container")
@@ -29,7 +30,7 @@ const getRandomWord = () => {
 }
 
 // add Zombie to screen, append zombieWord to zombieImg
-const spawnZombie = () => {
+const respawnZombie = () => {
     const zombieDiv = document.createElement("div")
     zombieDiv.classList.add("zombie", "position")
 
@@ -48,13 +49,14 @@ const spawnZombie = () => {
     zombieDiv.appendChild(zombieText)
 
     const zombieConDim = zombieCon.getBoundingClientRect()
+                                        // randomly place zombie relative to container, offset by height and width of zombie, and randomly offset x pixels
+    const zombieConDimX = Math.random() * (zombieConDim.width - 100) + (Math.random() > 0.5 ? 200: -300)
+    const zombieConDimY = Math.random() * (zombieConDim.height - 158.76) + (Math.random() > 0.5 ? 200: -300)
 
-    const zombieConDimX = Math.random() * (zombieConDim.width) + (Math.random() > 0.5 ? 200: -200)
-    const zombieConDimY = Math.random() * (zombieConDim.height) + (Math.random() > 0.5 ? 200: -200)
+    const zombieX = Math.min(Math.max(zombieConDimX, 0), zombieConDim.width - 100)
+    const zombieY = Math.min(Math.max(zombieConDimY, 0), zombieConDim.height - 158.76)
 
-    const zombieX = Math.min(Math.max(zombieConDimX, 0), zombieConDim.width - 200)
-    const zombieY = Math.min(Math.max(zombieConDimY, 0), zombieConDim.height - 200)
-
+    // zombieDiv.style.display = "inline-block" // doesn't work yet
     zombieDiv.style.position = "absolute"
     zombieDiv.style.left = `${zombieX}px`
     zombieDiv.style.top = `${zombieY}px`
@@ -62,18 +64,15 @@ const spawnZombie = () => {
     zombieCon.appendChild(zombieDiv)
 }
 
-// const zombieHorde = setInterval(() => {
-//     if (playerLevel >= 2 && wordList.length > 0) {
-//        spawnZombie()
-//     }  else {
-//         clearInterval(zombieHorde)
-//     }
-//     timerEl.textContent = `Time: ${timer}s`
-// }, 6000)
+const spawnZombie = () => {
+    for (let i = 1; i <= playerLevel; i++) {
+        respawnZombie()
+    }
 
+}
 
 // remove zombie elements from screen
-const removeZombie = () => {
+const removeZombie = (zombieWord) => {
     const zombieEls = document.querySelectorAll(".zombie")
     zombieEls.forEach((zombie) => {
         if (zombie.getAttribute('data-word') === zombieWord) {
@@ -86,15 +85,18 @@ const removeZombie = () => {
 // when zombie text is precisely matched in input, remove element and increase score
 const killZombie = () => {
     const firepower = playerEl.value.trim()
-    if (firepower === zombieWord) {
-        score++
-        scoreEl.textContent = `Score: ${score}`
-        timer += timeBonus
-        defeatedZombieWords.push(zombieWord)
-        removeZombie()
-        renderOutcome()
-    }
+    const zombieEls = document.querySelectorAll(".zombie")
 
+    zombieEls.forEach((zombie) => {
+        if (zombie.getAttribute("data-word") === firepower) {
+            score++
+            scoreEl.textContent = `Score: ${score}`
+            timer += timeBonus
+            defeatedZombieWords.push(firepower)
+            removeZombie(firepower)
+            renderOutcome()
+        }
+    })
 }
 
 // start timer
@@ -126,14 +128,11 @@ const handlePlay = () => {
 const renderOutcome = () => {
     defeatedZombieWords.length >= winCondition[playerLevel - 1] ? (titleEl.textContent = "You Win!", clearInterval(gameTimerID))
     : timer <= 0 ? titleEl.textContent = "You Lose"
-    : spawnZombie()
+    : respawnZombie()
 }
 
-// Reset to initial settings
-const handleReset = () => {
-    document.querySelector(".reset").classList.add("invisible")
-    document.querySelector(".play").classList.remove("invisible")
-    playerLevel = 1
+
+const init = () => {
     defeatedZombieWords.push(zombieWord)
     zombieWord = ""
     defeatedZombieWords.forEach((word) => { 
@@ -143,11 +142,26 @@ const handleReset = () => {
     clearInterval(gameTimerID)
     timer = 30
     timerEl.textContent = `Time: ${timer}s`
-    score = 0
+    score = defeatedZombieWords.length
     scoreEl.textContent = `Score: ${score}`
     playerEl.value = ""
     titleEl.textContent = "The Typing of the Dead"
     if (document.querySelector(".zombie")) zombieCon.removeChild(document.querySelector(".zombie"))
+}
+
+// Reset to initial settings
+const handleReset = () => {
+    document.querySelector(".reset").classList.add("invisible")
+    document.querySelector(".play").classList.remove("invisible")
+    playerLevel = 1
+    init()
+
+}
+
+const levelUp = () => {
+    playerLevel ++
+    init()
+    // level up modal
 }
 
 const handleInstructions = () => {
