@@ -1,6 +1,6 @@
 let defeatedZombieWords = []
 const winCondition = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
-let playerLevel = 2
+let playerLevel = 1
 const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
 const wordList = wordObj.vocab
 let zombieWord = ""
