@@ -119,9 +119,93 @@ header {
     flex-direction: column;
   }
 
-.position {
-    animation-name: slide;
+.position0 {
+    animation-name: slide0;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.position1 {
+    animation-name: slide1;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+}
+
+.position2 {
+    animation-name: slide2;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+.position3 {
+    animation-name: slide3;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+.position4 {
+    animation-name: slide4;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+
+.position5 {
+    animation-name: slide5;
+    animation-duration: 45s;
+    animation-iteration-count: infinite;
+}
+
+.position6 {
+    animation-name: slide6;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+}
+
+.position7 {
+    animation-name: slide7;
     animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.position8 {
+    animation-name: slide8;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+}
+
+.position9 {
+    animation-name: slide9;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+}
+
+.position10 {
+    animation-name: slide10;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.position11 {
+    animation-name: slide11;
+    animation-duration: 45s;
+    animation-iteration-count: infinite;
+}
+
+.position12 {
+    animation-name: slide12;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.position13 {
+    animation-name: slide13;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+.position14 {
+    animation-name: slide14;
+    animation-duration: 25s;
     animation-iteration-count: infinite;
 }
 
@@ -177,19 +261,270 @@ header {
     display: none;
 }
 
-@keyframes slide {
+@keyframes slide0 {
     0% {
       transform: translate3d(0, 0, 0);
     }
     25% {
-      transform: translate3d(-10%, 40%, 0);
-
+      transform: translate3d(-210%, -40%, 0);
     }
     50% {
       transform: translate3d(60%, -50%, 0);
     }
     75% {
-      transform: translate3d(-60%, 20%, 0);
+      transform: translate3d(160%, -20%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide1 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(260%, -20%, 0);
+    }
+    50% {
+      transform: translate3d(130%, -50%, 0);
+    }
+    75% {
+      transform: translate3d(130%, -80%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide2 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(-40%, -30%, 0);
+    }
+    50% {
+      transform: translate3d(0, -50%, 0);
+    }
+    75% {
+      transform: translate3d(-220%, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide3 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(-50%, -80%, 0);
+    }
+    50% {
+      transform: translate3d(-110%, -50%, 0);
+    }
+    75% {
+      transform: translate3d(-230%, -60%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide4 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(100%, -20%, 0);
+    }
+    50% {
+      transform: translate3d(60%, -50%, 0);
+    }
+    75% {
+      transform: translate3d(-215%, -30%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide5 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(0, -60%, 0);
+    }
+    50% {
+      transform: translate3d(230%, -20%, 0);
+    }
+    75% {
+      transform: translate3d(15%, -5%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide6 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(180%, -20%, 0);
+    }
+    50% {
+      transform: translate3d(130%, -60%, 0);
+    }
+    75% {
+      transform: translate3d(80%, -60%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide7 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, 0, 0);
+    }
+    75% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide8 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(-250%, 0, 0);
+    }
+    50% {
+      transform: translate3d(-100%, 0, 0);
+    }
+    75% {
+      transform: translate3d(200%, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide9 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(0, -50%, 0);
+    }
+    50% {
+      transform: translate3d(0, -40%, 0);
+    }
+    75% {
+      transform: translate3d(0, -30%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide10 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(-15%, -45%, 0);
+    }
+    50% {
+      transform: translate3d(65%, -55%, 0);
+    }
+    75% {
+      transform: translate3d(155%, -15%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide11 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(220%, -30%, 0);
+    }
+    50% {
+      transform: translate3d(60%, -30%, 0);
+    }
+    75% {
+      transform: translate3d(130%, -30%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide12 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(50%, -60%, 0);
+    }
+    50% {
+      transform: translate3d(20%, -40%, 0);
+    }
+    75% {
+      transform: translate3d(10%, -10%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide13 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(50%, -70%, 0);
+    }
+    50% {
+      transform: translate3d(150%, -40%, 0);
+    }
+    75% {
+      transform: translate3d(230%, -10%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes slide14 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(-30%, -20%, 0);
+    }
+    50% {
+      transform: translate3d(-90%, -40%, 0);
+    }
+    75% {
+      transform: translate3d(-115%, -60%, 0);
     }
     100% {
       transform: translate3d(0, 0, 0);

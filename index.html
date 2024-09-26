@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Typing of the Dead</title>
-    <link rel="stylesheet" href="./style.css">
-    <script defer src="./word-bank.js"></script>
-    <script defer src="./app.js"></script>
-</head>
-<body>
-    <span class="sr-only">Creepy background of a graveyard</span> <!--description of background image for screen reader, since alt text not available-->
-    <header> 
-        <h1 id="game-title">The Typing of the Dead</h1>
-    </header>
-    <section id="information-space">
-        <div class="modal" id="instructionsModal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>How to Play</h2>
-                <p>It's the night of the living dead! And the only way to beat them is by having brains too big to eat. <br><br><br> Fight back against the zombies by typing in the type whatever word appears with the zombie (case matters!) and rack up kills to beat the level.<br><br><br> Take too long and you might lose one of your lives or run out of time.</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Typing of the Dead</title>
+        <link rel="stylesheet" href="./style.css">
+        <script defer src="./word-bank.js"></script>
+        <script defer src="./app.js"></script>
+    </head>
+    <body>
+        <span class="sr-only">Creepy background of a graveyard</span> <!--description of background image for screen reader, since alt text not available-->
+        <header> 
+            <h1 id="game-title">The Typing of the Dead</h1>
+        </header>
+        <section id="information-space">
+            <div class="modal" id="instructionsModal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2>How to Play</h2>
+                    <p>It's the night of the living dead! And the only way to beat them is by having brains too big to eat. <br><br><br> Fight back against the zombies by typing in the type whatever word appears with the zombie (case matters!) and rack up kills to beat the level.<br><br><br> Take too long and you might lose one of your lives or run out of time.</p>
+                </div>
             </div>
-        </div>
-    </section>
-    <section id="game-display">
-        <div class="zombie-container">
-        </div>
-    </section>
-    <section id="player-components">
-        <div id="timer">Time: 30s</div>
-        <!-- <div id="lives">🫀🫀🫀</div> -->
-        <input type="text" id="player" placeholder="Type Here"></input>
-        <div id="score">Score: 0</div>
-                <!-- Add in Sound later
-        
-        <button type="button" class="unmute">🔊</button>
-        <button type="button" class="mute">🔇</button> -->
-    </section>
-    <footer class="game-buttons">
-        <button type="button" class="play">▶ Play</button>
-        <button type="button" class="reset invisible">🔄 Reset</button>
-        <button type="button" class="instructions">📄 Instructions</button>
-        <button type="button" class="settings">⚙️ Settings</button>
-    </footer>
-</body>
+        </section>
+        <section id="game-display">
+            <div class="zombie-container">
+            </div>
+        </section>
+        <section id="player-components">
+            <div id="timer">Time: 30s</div>
+            <!-- <div id="lives">🫀🫀🫀</div> -->
+            <input type="text" id="player" placeholder="Type Here"></input>
+            <div id="score">Kill Count: 0</div>
+                    <!-- Add in Sound later
+            
+            <button type="button" class="unmute">🔊</button>
+            <button type="button" class="mute">🔇</button> -->
+        </section>
+        <footer class="game-buttons">
+            <button type="button" class="play">▶ Play</button>
+            <button type="button" class="reset invisible">🔄 Reset</button>
+            <button type="button" class="instructions">📄 Instructions</button>
+            <button type="button" class="settings">⚙️ Settings</button>
+        </footer>
+    </body>
 </html>

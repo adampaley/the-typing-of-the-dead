@@ -1,13 +1,15 @@
 let defeatedZombieWords = []
+// const zombieMovements = ["position8", "position9"]
+const zombieMovements = ["position0", "position1", "position2", "position3", "position4", "position5", "position6", "position7", "position8", "position9", "position10", "position11", "position12", "position13", "position14"]
 const winCondition = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
-let playerLevel = 2
+let playerLevel = 4
 const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
 const wordList = wordObj.vocab
 let zombieWord = ""
 let timer = 30
 let timeBonus = 3
 let gameTimerID
-let score = defeatedZombieWords.length
+let killCount = defeatedZombieWords.length
 
 
 const buttonEl = document.querySelectorAll(".game-buttons button")
@@ -32,7 +34,9 @@ const getRandomWord = () => {
 // add Zombie to screen, append zombieWord to zombieImg
 const respawnZombie = () => {
     const zombieDiv = document.createElement("div")
-    zombieDiv.classList.add("zombie", "position")
+    zombieDiv.classList.add("zombie")
+    zombieDiv.classList.add(zombieMovements[Math.floor(Math.random()*zombieMovements.length)])
+    console.log(zombieDiv)
 
     const zombieImg = document.createElement("img")
     zombieImg.classList.add("zombie-render")
@@ -48,21 +52,14 @@ const respawnZombie = () => {
     zombieDiv.appendChild(zombieImg)
     zombieDiv.appendChild(zombieText)
 
-    const zombieConDim = zombieCon.getBoundingClientRect()
-                                        // randomly place zombie relative to container, offset by height and width of zombie, and randomly offset x pixels
-    const zombieConDimX = Math.random() * (zombieConDim.width - 100) + (Math.random() > 0.5 ? 200: -300)
-    const zombieConDimY = Math.random() * (zombieConDim.height - 158.76) + (Math.random() > 0.5 ? 200: -300)
-
-    const zombieX = Math.min(Math.max(zombieConDimX, 0), zombieConDim.width - 100)
-    const zombieY = Math.min(Math.max(zombieConDimY, 0), zombieConDim.height - 158.76)
-
-    // zombieDiv.style.display = "inline-block" // doesn't work yet
-    zombieDiv.style.position = "absolute"
-    zombieDiv.style.left = `${zombieX}px`
-    zombieDiv.style.top = `${zombieY}px`
-
+    Object.assign(zombieDiv.style {
+    position = "absolute"
+    }
+    
     zombieCon.appendChild(zombieDiv)
 }
+
+
 
 const spawnZombie = () => {
     for (let i = 1; i <= playerLevel; i++) {
@@ -82,15 +79,15 @@ const removeZombie = (zombieWord) => {
     })
 }
 
-// when zombie text is precisely matched in input, remove element and increase score
+// when zombie text is precisely matched in input, remove element and increase kill count
 const killZombie = () => {
     const firepower = playerEl.value.trim()
     const zombieEls = document.querySelectorAll(".zombie")
 
     zombieEls.forEach((zombie) => {
         if (zombie.getAttribute("data-word") === firepower) {
-            score++
-            scoreEl.textContent = `Score: ${score}`
+            killCount++
+            scoreEl.textContent = `Kill Count: ${killCount}`
             timer += timeBonus
             defeatedZombieWords.push(firepower)
             removeZombie(firepower)
@@ -133,6 +130,7 @@ const renderOutcome = () => {
 
 
 const init = () => {
+    // why are there zombies not all disappearing during reset
     defeatedZombieWords.push(zombieWord)
     zombieWord = ""
     defeatedZombieWords.forEach((word) => { 
@@ -142,8 +140,8 @@ const init = () => {
     clearInterval(gameTimerID)
     timer = 30
     timerEl.textContent = `Time: ${timer}s`
-    score = defeatedZombieWords.length
-    scoreEl.textContent = `Score: ${score}`
+    killCount = defeatedZombieWords.length
+    scoreEl.textContent = `Kill Count: ${killCount}`
     playerEl.value = ""
     titleEl.textContent = "The Typing of the Dead"
     if (document.querySelector(".zombie")) zombieCon.removeChild(document.querySelector(".zombie"))
