@@ -263,7 +263,7 @@ header {
 
 @keyframes slide0 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-100, 0, 0);
     }
     25% {
       transform: translate3d(-210%, -40%, 0);
@@ -275,13 +275,13 @@ header {
       transform: translate3d(160%, -20%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-100, 0, 0);
     }
   }
 
   @keyframes slide1 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-220%, 0, 0);
     }
     25% {
       transform: translate3d(260%, -20%, 0);
@@ -293,13 +293,13 @@ header {
       transform: translate3d(130%, -80%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-220%, 0, 0);
     }
   }
 
   @keyframes slide2 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(100%, 0, 0);
     }
     25% {
       transform: translate3d(-40%, -30%, 0);
@@ -311,13 +311,13 @@ header {
       transform: translate3d(-220%, 0, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(100%, 0, 0);
     }
   }
 
   @keyframes slide3 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, -80%, 0);
     }
     25% {
       transform: translate3d(-50%, -80%, 0);
@@ -329,13 +329,13 @@ header {
       transform: translate3d(-230%, -60%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, -80%, 0);
     }
   }
 
   @keyframes slide4 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(60%, -60%, 0);
     }
     25% {
       transform: translate3d(100%, -20%, 0);
@@ -347,13 +347,13 @@ header {
       transform: translate3d(-215%, -30%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(60%, -60%, 0);
     }
   }
 
   @keyframes slide5 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(250%, -30%, 0);
     }
     25% {
       transform: translate3d(0, -60%, 0);
@@ -365,13 +365,13 @@ header {
       transform: translate3d(15%, -5%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(250%, -30%, 0);
     }
   }
 
   @keyframes slide6 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(90%, -10%, 0);
     }
     25% {
       transform: translate3d(180%, -20%, 0);
@@ -383,7 +383,7 @@ header {
       transform: translate3d(80%, -60%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(90%, -10%, 0);
     }
   }
 
@@ -407,7 +407,7 @@ header {
 
   @keyframes slide8 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-150%, 0, 0);
     }
     25% {
       transform: translate3d(-250%, 0, 0);
@@ -419,13 +419,13 @@ header {
       transform: translate3d(200%, 0, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-150%, 0, 0);
     }
   }
 
   @keyframes slide9 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, -60%, 0);
     }
     25% {
       transform: translate3d(0, -50%, 0);
@@ -437,13 +437,13 @@ header {
       transform: translate3d(0, -30%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, -60%, 0);
     }
   }
 
   @keyframes slide10 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(30%, -30%, 0);
     }
     25% {
       transform: translate3d(-15%, -45%, 0);
@@ -455,13 +455,13 @@ header {
       transform: translate3d(155%, -15%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(30%, -30%, 0);
     }
   }
 
   @keyframes slide11 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(175%, -30%, 0);
     }
     25% {
       transform: translate3d(220%, -30%, 0);
@@ -473,13 +473,13 @@ header {
       transform: translate3d(130%, -30%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(175%, -30%, 0);
     }
   }
 
   @keyframes slide12 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(50%, -40%, 0);
     }
     25% {
       transform: translate3d(50%, -60%, 0);
@@ -491,13 +491,13 @@ header {
       transform: translate3d(10%, -10%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(50%, -40%, 0);
     }
   }
 
   @keyframes slide13 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(50%, -60%, 0);
     }
     25% {
       transform: translate3d(50%, -70%, 0);
@@ -509,13 +509,13 @@ header {
       transform: translate3d(230%, -10%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(50%, -60%, 0);
     }
   }
 
   @keyframes slide14 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-50%, -10%, 0);
     }
     25% {
       transform: translate3d(-30%, -20%, 0);
@@ -527,17 +527,6 @@ header {
       transform: translate3d(-115%, -60%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-50%, -10%, 0);
     }
   }
-
-/* // parent container (same DIV), add a position: relative to parent container 
-// if you absolute position the children of a parent container and the parent container is relatively position, will be absolutely conditioned relative to the browser
-// z-index, with layering everything has by default a zero index. Where it gets wonky is things like with fixed positions.
-
-// can be weird with position absolute, position fixed. Also override the zero base level.  
-
-
-*/
-
-/* user a header for title, div/main/section for gameboard, and footer for content */

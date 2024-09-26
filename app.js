@@ -2,7 +2,7 @@ let defeatedZombieWords = []
 // const zombieMovements = ["position8", "position9"]
 const zombieMovements = ["position0", "position1", "position2", "position3", "position4", "position5", "position6", "position7", "position8", "position9", "position10", "position11", "position12", "position13", "position14"]
 const winCondition = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
-let playerLevel = 4
+let playerLevel = 2
 const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
 const wordList = wordObj.vocab
 let zombieWord = ""
@@ -52,10 +52,10 @@ const respawnZombie = () => {
     zombieDiv.appendChild(zombieImg)
     zombieDiv.appendChild(zombieText)
 
-    Object.assign(zombieDiv.style {
-    position = "absolute"
-    }
-    
+    Object.assign(zombieDiv.style, {
+        position: "absolute",
+    })
+
     zombieCon.appendChild(zombieDiv)
 }
 
@@ -69,6 +69,12 @@ const spawnZombie = () => {
 }
 
 // remove zombie elements from screen
+
+const removeAllZombies = () => {
+    const zombieEls = document.querySelectorAll(".zombie") 
+    zombieEls.forEach(zombie => zombie.remove())
+}
+
 const removeZombie = (zombieWord) => {
     const zombieEls = document.querySelectorAll(".zombie")
     zombieEls.forEach((zombie) => {
@@ -122,9 +128,21 @@ const handlePlay = () => {
 
 } 
 
+const winGame = () => {
+    titleEl.textContent = "You Win!"
+    clearInterval(gameTimerID)
+    removeAllZombies()
+}
+
+const loseGame = () => {
+    titleEl.textContent = "You Lose"
+    clearInterval(gameTimerID)
+    removeAllZombies()
+}
+
 const renderOutcome = () => {
-    defeatedZombieWords.length >= winCondition[playerLevel - 1] ? (titleEl.textContent = "You Win!", clearInterval(gameTimerID))
-    : timer <= 0 ? titleEl.textContent = "You Lose"
+    defeatedZombieWords.length >= winCondition[playerLevel - 1] ? winGame()
+    : timer <= 0 ? loseGame()
     : respawnZombie()
 }
 
