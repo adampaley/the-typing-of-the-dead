@@ -32,6 +32,10 @@ The following languages and technologies were implement to create this game:
 ## Next Steps
 Potential features to be added on:
 * Background Audio
+* Settings
+    * Limit Animations
+    * Large Text
+    * Mute/Unmute
 * Levels
 * Zombie Timer / Player Lives
 * High Scores
