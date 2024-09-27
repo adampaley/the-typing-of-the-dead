@@ -44,6 +44,7 @@ const respawnZombie = () => {
     const zombieImg = document.createElement("img")
     zombieImg.classList.add("zombie-render")
     zombieImg.src = "./assets/generic-zombie-sprite.webp"
+    zombieImg.art = "Zombie featuring the word: "
 
     // Attach zombie word as attribute
     zombieWord = getRandomWord()
