@@ -1,7 +1,7 @@
 // Global Game Constants and Variables
 const zombieMovements = ["position0", "position1", "position2", "position3", "position4", "position5", "position6", "position7", "position8", "position9", "position10", "position11", "position12", "position13", "position14"]
 const winCondition = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
-let playerLevel = 2
+let playerLevel = 3
 const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
 const wordList = wordObj.vocab
 let defeatedZombieWords = []
