@@ -1,6 +1,6 @@
 // Global Game Constants and Variables
 const zombieMovements = ["position0", "position1", "position2", "position3", "position4", "position5", "position6", "position7", "position8", "position9", "position10", "position11", "position12", "position13", "position14"]
-const winCondition = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
+const winConditions = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
 let playerLevel = 2
 const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
 const wordList = wordObj.vocab
@@ -151,7 +151,7 @@ const loseGame = () => {
 
 // Determine if game is won, lost, or still ongoing
 const renderOutcome = () => {
-    defeatedZombieWords.length >= winCondition[playerLevel - 1] ? winGame()
+    defeatedZombieWords.length >= winConditions[playerLevel - 1] ? winGame()
     : timer <= 0 ? loseGame()
     : respawnZombie()
 }

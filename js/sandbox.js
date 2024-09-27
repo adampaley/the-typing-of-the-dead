@@ -76,7 +76,7 @@ const levelUp = () => {
 
 const renderOutcome = () => {
 //  ...
-    : defeatedZombieWords.length >= winCondition[playerLevel - 1] ? levelUp()
+    : defeatedZombieWords.length >= winConditions[playerLevel - 1] ? levelUp()
 //  ...
 }
 
