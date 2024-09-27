@@ -1,103 +1,88 @@
-let defeatedZombieWords = []
+// Global Game Constants and Variables
 const zombieMovements = ["position0", "position1", "position2", "position3", "position4", "position5", "position6", "position7", "position8", "position9", "position10", "position11", "position12", "position13", "position14"]
 const winCondition = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
-let playerLevel = 4
+let playerLevel = 2
 const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
 const wordList = wordObj.vocab
+let defeatedZombieWords = []
 let zombieWord = ""
+let killCount = defeatedZombieWords.length
 let timer = 30
 let timeBonus = 3
-let gameTimerID
-let killCount = defeatedZombieWords.length
-let livesLeft = 5
+let gameTimerInt
 
-
-const buttonEl = document.querySelectorAll(".game-buttons button")
+// Global Cache Element References
+const titleEl = document.querySelector("#game-title")
 const zombieCon = document.querySelector(".zombie-container")
 const playerEl = document.querySelector("#player")
-const scoreEl = document.querySelector("#score")
-const titleEl = document.querySelector("#game-title")
+const killCountEl = document.querySelector("#kill-count")
 const timerEl = document.querySelector("#timer")
-const livesEl = document.querySelector("#lives")
+const buttonEl = document.querySelectorAll(".game-buttons button")
 
-// select random word from wordList
-
+// Select random word from wordList
 const getRandomWord = () => {
     if (wordList.length === 0) {
         return null
     }
-    let zombieWord = wordList[Math.floor(Math.random() * wordList.length)]
+    zombieWord = wordList[Math.floor(Math.random() * wordList.length)]
     let zombieWordIndex = wordList.indexOf(zombieWord)
     wordList.splice(zombieWordIndex, 1)
-    return zombieWord
+    return zombieWord.toLowerCase()
+    
 }
 
-const updateLives = () => {
-    livesEl.textContent = "❤️".repeat(livesLeft)
-}
-
-// add Zombie to screen, append zombieWord to zombieImg
+// Render zombie with all visual elements and necessary attributes
 const respawnZombie = () => {
+    // Create HTML element
     const zombieDiv = document.createElement("div")
     zombieDiv.classList.add("zombie")
+
+    // Set zombie animation
     zombieDiv.classList.add(zombieMovements[Math.floor(Math.random()*zombieMovements.length)])
-    console.log(zombieDiv)
 
-    const zombieTime = document.createElement("div")
-    zombieTime.classList.add("zombie-time")
-    zombieTime.textContent = "15s"
-
-    let zombieTimer = 15
-    const zombieTimerInt = setInterval(() => {
-        zombieTimer--
-        zombieTime.textContent = `${zombieTimer}s`
-
-        if (zombieTimer <=0) {
-            clearInterval(zombieTimerInt)
-            zombieDiv.remove()
-            if (lives > 0) {
-                livesLeft--
-                updateLives()
-                respawnZombie()
-                renderOutcome()
-            }
-        }
-    }, 1000)
-
+    // Make zombie sprite
     const zombieImg = document.createElement("img")
     zombieImg.classList.add("zombie-render")
     zombieImg.src = "./assets/generic-zombie-sprite.webp"
 
+    // Attach zombie word as attribute
     zombieWord = getRandomWord()
     zombieDiv.setAttribute('data-word', zombieWord);
 
+    // Make zombie word visible
     const zombieText = document.createElement("div")
     zombieText.classList.add("zombie-text")
     zombieText.textContent = zombieWord
 
-    zombieDiv.appendChild(zombieTime)
+    // Attach sprite and word to HTML element
     zombieDiv.appendChild(zombieImg)
     zombieDiv.appendChild(zombieText)
 
+    // Allow for easier manipulation of zombie path
     Object.assign(zombieDiv.style, {
         position: "absolute",
     })
 
+    // Place in container
     zombieCon.appendChild(zombieDiv)
 }
 
+
+// Set number of zombies equal to game level/difficulty
 const spawnZombie = () => {
     for (let i = 1; i <= playerLevel; i++) {
         respawnZombie()
     }
+
 }
 
-// remove zombie elements from screen
+// Remove zombies at conclusion of game play
 const removeAllZombies = () => {
-    const zombieEls = document.querySelectorAll(".zombies") 
+    const zombieEls = document.querySelectorAll(".zombie") 
     zombieEls.forEach(zombie => zombie.remove())
 }
 
+// Ensures any zombie can be defeated at any time
 const removeZombie = (zombieWord) => {
     const zombieEls = document.querySelectorAll(".zombie")
     zombieEls.forEach((zombie) => {
@@ -108,16 +93,16 @@ const removeZombie = (zombieWord) => {
     })
 }
 
-// when zombie text is precisely matched in input, remove element and increase kill count
+// When individual zombie is defeated, it is removed and kill count increases
 const killZombie = () => {
-    const firepower = playerEl.value.trim()
+    const firepower = playerEl.value.toLowerCase().trim()
     const zombieEls = document.querySelectorAll(".zombie")
 
     zombieEls.forEach((zombie) => {
         if (zombie.getAttribute("data-word") === firepower) {
             killCount++
-            scoreEl.textContent = `Kill Count: ${killCount}`
-            timer += timeBonus
+            killCountEl.textContent = `Kill Count: ${killCount}`
+            timer += timeBonus // reward for beating a zombie
             defeatedZombieWords.push(firepower)
             removeZombie(firepower)
             renderOutcome()
@@ -125,13 +110,12 @@ const killZombie = () => {
     })
 }
 
-// start timer
-
+// Start game timer
 const startTimer = () => {
-    gameTimerID = setInterval(() => {
+    gameTimerInt = setInterval(() => {
         if (timer <= 0) {
-            clearInterval(gameTimerID)
-            removeAllZombies()
+            clearInterval(gameTimerInt)
+            removeZombie()
             renderOutcome()
         }  else {
             timer --
@@ -141,8 +125,7 @@ const startTimer = () => {
     return timer
 }
 
-// When play is clicked, start time and generate zombie
-
+// When play is clicked, start time and generate zombie. Toggle from play button to reset button.
 const handlePlay = () => {
     startTimer()
     spawnZombie()
@@ -151,40 +134,40 @@ const handlePlay = () => {
 
 } 
 
-const playerWins = () => {
-    titleEl.textContent = "You Win!" 
+// Render win outcome
+const winGame = () => {
+    titleEl.textContent = "You Win!"
+    clearInterval(gameTimerInt)
     removeAllZombies()
-    clearInterval(gameTimerID)
 }
 
-const playerLoses = () => {
+// Render lose outcome
+const loseGame = () => {
     titleEl.textContent = "You Lose"
+    clearInterval(gameTimerInt)
     removeAllZombies()
-    clearInterval(gameTimerID)
 }
 
+// Determine if game is won, lost, or still ongoing
 const renderOutcome = () => {
-    defeatedZombieWords.length >= winCondition[winCondition.length - 1] ? playerWins()
-    : defeatedZombieWords.length >= winCondition[playerLevel - 1] ? levelUp()
-    : livesLeft <= 0 ? playerLoses()
-    : timer <= 0 ? playerLoses()
+    defeatedZombieWords.length >= winCondition[playerLevel - 1] ? winGame()
+    : timer <= 0 ? loseGame()
     : respawnZombie()
 }
 
-
+// Initial game settings for if the game is reset or progresses to level
 const init = () => {
-    // why are there zombies not all disappearing during reset
     defeatedZombieWords.push(zombieWord)
     zombieWord = ""
     defeatedZombieWords.forEach((word) => { 
         if(!wordList.includes(word)) wordList.push(word)
     })
     defeatedZombieWords = []
-    clearInterval(gameTimerID)
+    clearInterval(gameTimerInt)
     timer = 30
     timerEl.textContent = `Time: ${timer}s`
     killCount = defeatedZombieWords.length
-    scoreEl.textContent = `Kill Count: ${killCount}`
+    killCountEl.textContent = `Kill Count: ${killCount}`
     playerEl.value = ""
     titleEl.textContent = "The Typing of the Dead"
     removeAllZombies()
@@ -194,22 +177,12 @@ const init = () => {
 const handleReset = () => {
     document.querySelector(".reset").classList.add("invisible")
     document.querySelector(".play").classList.remove("invisible")
-    playerLevel = 1
     init()
-
 }
 
-const levelUp = () => {
-    removeAllZombies()
-    // push words back to wordList
-    // levelUp(modal) with a continue button
-    playerLevel++
-    init()
-    // level up modal
-}
-
+// Show game instructions
 const handleInstructions = () => {
-    const modal = document.querySelector("#instructionsModal") 
+    const modal = document.querySelector("#instructions-modal") 
     modal.style.display = "block"
 
     buttonEl.forEach(button => {
@@ -228,15 +201,14 @@ const handleInstructions = () => {
     window.onclick = (event) => { // doesn't work if I click outside the modal div
         if (event.target === modal) {
             modal.style.display = "none"
-            buttonEl.forEach(button => {
-                 button.disabled = false; 
+                buttonEl.forEach(button => {
+                button.disabled = false; 
             });
         }
     }
 }
 
-// event delegation for buttons
-
+// Event delegation for buttons
 const handleButtonClicks = (event) => {
     const button = event.target
     const buttonText = button.textContent
@@ -248,9 +220,6 @@ const handleButtonClicks = (event) => {
         case button.classList.contains("instructions"):
             handleInstructions()
             break
-        case button.classList.contains("settings"):
-            console.log("handleSettings()")
-            break
         case button.classList.contains("reset"):
             handleReset()
             break
@@ -259,5 +228,6 @@ const handleButtonClicks = (event) => {
     } 
 }
 
+// Event Listeners
 buttonEl.forEach(button => button.addEventListener('click', handleButtonClicks))
 playerEl.addEventListener("input", killZombie)

@@ -4,23 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The Typing of the Dead</title>
-        <link rel="stylesheet" href="./style.css">
-        <script defer src="./word-bank.js"></script>
-        <script defer src="./app.js"></script>
+        <link rel="stylesheet" href="./css/animation.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <script defer src="./js/word-bank.js"></script>
+        <script defer src="./js/app.js"></script>
     </head>
     <body>
-        <span class="sr-only">Creepy background of a graveyard</span> <!--description of background image for screen reader, since alt text not available-->
+        <span class="sr-only">Creepy background of a graveyard</span>
         <header> 
             <h1 id="game-title">The Typing of the Dead</h1>
         </header>
         <section id="information-space">
-            <div class="modal" id="instructionsModal">
+            <div class="modal" id="instructions-modal">
                 <div class="modal-content">
                     <span class="close-button">&times;</span>
                     <h2>How to Play</h2>
-                    <p>It's the night of the living dead! And the only way to beat them is by having brains too big to eat. <br><br><br> Fight back against the zombies by typing in the type whatever word appears with the zombie (case matters!) and rack up kills to beat the level.<br><br><br> Take too long and you might lose one of your lives or run out of time.</p>
+                    <p>It's the night of the living dead! And the only way to beat them is by having brains too big to eat. <br><br><br> Fight back against the zombies by typing in the type whatever word appears with the zombie (case matters!) and rack up kills to beat the game.<br><br><br>Each kills rewards you with some time back!<br><br><br> Take too long and you'll run out of time.</p>
                 </div>
             </div>
+            <div id="small-screen">Zombies are immune to Tablet or Mobile devices.</div>
         </section>
         <section id="game-display">
             <div class="zombie-container">
@@ -28,19 +30,13 @@
         </section>
         <section id="player-components">
             <div id="timer">Time: 30s</div>
-            <!-- <div id="lives">🫀🫀🫀🫀🫀</div> -->
             <input type="text" id="player" placeholder="Type Here"></input>
-            <div id="score">Kill Count: 0</div>
-                    <!-- Add in Sound later
-            
-            <button type="button" class="unmute">🔊</button>
-            <button type="button" class="mute">🔇</button> -->
+            <div id="kill-count">Kill Count: 0</div>
         </section>
         <footer class="game-buttons">
             <button type="button" class="play">▶ Play</button>
             <button type="button" class="reset invisible">🔄 Reset</button>
             <button type="button" class="instructions">📄 Instructions</button>
-            <button type="button" class="settings">⚙️ Settings</button>
         </footer>
     </body>
 </html>
