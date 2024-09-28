@@ -214,6 +214,7 @@ const levelUp = () => {
 const handleReset = () => {
     levelModal.style.display = "none"
     instructionsModal.style.display = "none"
+    playerLevel = 1
     document.querySelector(".reset").classList.add("invisible")
     document.querySelector(".play").classList.remove("invisible")
     init()
