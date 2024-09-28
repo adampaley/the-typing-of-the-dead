@@ -64,31 +64,6 @@ const renderOutcome = () => {
 
 */
 
-/* level up 
-const levelUp = () => {
-    removeAllZombies()
-    // push words back to wordList
-    // levelUp(modal) with a continue button
-    playerLevel++
-    init()
-    // level up modal
-}
-
-const renderOutcome = () => {
-//  ...
-    : defeatedZombieWords.length >= winConditions[playerLevel - 1] ? levelUp()
-//  ...
-}
-
-const handleReset = () => {
-//  ...
-    playerLevel = 1
-}
-*/
-
-
-
-
 /* Settings
 
 

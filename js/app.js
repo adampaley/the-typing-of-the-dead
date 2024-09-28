@@ -1,9 +1,8 @@
 // Global Game Constants and Variables
 const zombieMovements = ["position0", "position1", "position2", "position3", "position4", "position5", "position6", "position7", "position8", "position9", "position10", "position11", "position12", "position13", "position14"]
 const winConditions = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
-let playerLevel = 2
-const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
-const wordList = wordObj.vocab
+let playerLevel = 1
+wordList = []
 let defeatedZombieWords = []
 let zombieWord = ""
 let killCount = defeatedZombieWords.length
@@ -17,7 +16,18 @@ const zombieCon = document.querySelector(".zombie-container")
 const playerEl = document.querySelector("#player")
 const killCountEl = document.querySelector("#kill-count")
 const timerEl = document.querySelector("#timer")
-const buttonEl = document.querySelectorAll(".game-buttons button")
+const buttonEl = document.querySelectorAll("button")
+const instructionsModal = document.querySelector("#instructions-modal") 
+const levelModal = document.querySelector("#level-modal")
+const levelModalHeaderEl = document.querySelector("#modal-header")
+const levelModalTextEl = document.querySelector("#modal-text")
+const continueEl = document.querySelector(".continue")
+
+
+const updateWordList = () => {
+    const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
+    wordList = wordObj.vocab
+}
 
 // Select random word from wordList
 const getRandomWord = () => {
@@ -48,7 +58,7 @@ const respawnZombie = () => {
 
     // Attach zombie word as attribute
     zombieWord = getRandomWord()
-    zombieDiv.setAttribute('data-word', zombieWord);
+    zombieDiv.setAttribute('data-word', zombieWord)
 
     // Make zombie word visible
     const zombieText = document.createElement("div")
@@ -128,12 +138,25 @@ const startTimer = () => {
 
 // When play is clicked, start time and generate zombie. Toggle from play button to reset button.
 const handlePlay = () => {
-    startTimer()
-    spawnZombie()
+
+    init()
+    updateWordList()
+    levelModalHeaderEl.textContent = `Game Start`
+    levelModalTextEl.textContent = `A wave of ${winConditions[playerLevel-1]} or more zombies are coming!\
+        
+    Can you fight them off?`
+    continueEl.textContent = `Start`
+    levelModal.style.display = "block" // Show the modal
     document.querySelector(".reset").classList.remove("invisible")
     document.querySelector(".play").classList.add("invisible")
-
 } 
+
+// Handle start or continue button click
+const handleContinue = () => {
+    levelModal.style.display = "none"
+    startTimer()
+    spawnZombie()
+}
 
 // Render win outcome
 const winGame = () => {
@@ -151,7 +174,8 @@ const loseGame = () => {
 
 // Determine if game is won, lost, or still ongoing
 const renderOutcome = () => {
-    defeatedZombieWords.length >= winConditions[playerLevel - 1] ? winGame()
+    defeatedZombieWords.length >= winConditions[winConditions.length - 1] ? winGame()
+    : defeatedZombieWords.length >= winConditions[playerLevel - 1] ? levelUp()
     : timer <= 0 ? loseGame()
     : respawnZombie()
 }
@@ -174,8 +198,22 @@ const init = () => {
     removeAllZombies()
 }
 
+const levelUp = () => {
+    init()
+    playerLevel++
+    updateWordList()
+    levelModalHeaderEl.textContent = `Level Up`
+    levelModalTextEl.textContent = `You held off that wave, but another with at least ${winConditions[playerLevel-1]} more zombies are coming!\
+    
+    Ready for level ${playerLevel}?`
+    continueEl.textContent = `Continue`
+    levelModal.style.display = "block" // Show the modal
+}
+
 // Reset to initial settings
 const handleReset = () => {
+    levelModal.style.display = "none"
+    instructionsModal.style.display = "none"
     document.querySelector(".reset").classList.add("invisible")
     document.querySelector(".play").classList.remove("invisible")
     init()
@@ -183,28 +221,27 @@ const handleReset = () => {
 
 // Show game instructions
 const handleInstructions = () => {
-    const modal = document.querySelector("#instructions-modal") 
-    modal.style.display = "block"
+    instructionsModal.style.display = "block"
+    levelModal.style.display = "none"
 
     buttonEl.forEach(button => {
-        button.disabled = true; 
-    });
+        button.disabled = true
+    })
 
     const closeButton = document.querySelector(".close-button")
     closeButton.onclick = () => {
-        modal.style.display = "none"
-        
+        instructionsModal.style.display = "none"        
         buttonEl.forEach(button => {
-            button.disabled = false; 
-        });
+            button.disabled = false
+        })
     }
 
     window.onclick = (event) => { // doesn't work if I click outside the modal div
-        if (event.target === modal) {
-            modal.style.display = "none"
+        if (event.target === instructionsModal) {
+            instructionsModal.style.display = "none"
                 buttonEl.forEach(button => {
-                button.disabled = false; 
-            });
+                button.disabled = false
+            })
         }
     }
 }
@@ -212,8 +249,6 @@ const handleInstructions = () => {
 // Event delegation for buttons
 const handleButtonClicks = (event) => {
     const button = event.target
-    const buttonText = button.textContent
-
     switch (true) {
         case button.classList.contains("play"):
             handlePlay()
@@ -223,6 +258,9 @@ const handleButtonClicks = (event) => {
             break
         case button.classList.contains("reset"):
             handleReset()
+            break
+        case button.classList.contains("continue"):
+            handleContinue()
             break
         default:
             return
