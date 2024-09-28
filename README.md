@@ -29,7 +29,10 @@ The following languages and technologies were implement to create this game:
 * DOM Manipulation
 
 ## Attributions
-* Copyright Free Background Audio (not featured in deployed version): "Nebula Nights" - Adi Goldstein
+* Copyright Free Background Audio (not featured in deployed version): "Nebula Nights" - Adi Goldstein https://uppbeat.io/browse/artist/adi-goldstein 
+* Pixel Art Zombie Sprite: https://www.reddit.com/r/PixelArt/comments/108e8to/zombie_sprite/
+* AI Generated Background Image: https://myninja.ai/ 
+
 
 ## Next Steps
 Potential features to be added on:
