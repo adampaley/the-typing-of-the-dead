@@ -36,6 +36,7 @@ The following languages and technologies were implement to create this game:
 
 ## Next Steps
 Potential features to be added on:
+* Prevent Zombies from overlaying
 * Background Audio
 * Settings
     * Limit Animations
