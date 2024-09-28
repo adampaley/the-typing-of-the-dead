@@ -23,7 +23,7 @@ const levelModalHeaderEl = document.querySelector("#modal-header")
 const levelModalTextEl = document.querySelector("#modal-text")
 const continueEl = document.querySelector(".continue")
 
-
+// Dynamically update word list when called whenever player level changes
 const updateWordList = () => {
     const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
     wordList = wordObj.vocab
@@ -84,7 +84,6 @@ const spawnZombie = () => {
     for (let i = 1; i <= playerLevel; i++) {
         respawnZombie()
     }
-
 }
 
 // Remove zombies at conclusion of game play
@@ -93,7 +92,7 @@ const removeAllZombies = () => {
     zombieEls.forEach(zombie => zombie.remove())
 }
 
-// Ensures any zombie can be defeated at any time
+// Ensures any zombie can be defeated at any time, resets player input
 const removeZombie = (zombieWord) => {
     const zombieEls = document.querySelectorAll(".zombie")
     zombieEls.forEach((zombie) => {
@@ -143,10 +142,11 @@ const handlePlay = () => {
     updateWordList()
     levelModalHeaderEl.textContent = `Game Start`
     levelModalTextEl.textContent = `A wave of ${winConditions[playerLevel-1]} or more zombies are coming!\
-        
+     
+
     Can you fight them off?`
     continueEl.textContent = `Start`
-    levelModal.style.display = "block" // Show the modal
+    levelModal.style.display = "block" 
     document.querySelector(".reset").classList.remove("invisible")
     document.querySelector(".play").classList.add("invisible")
 } 
@@ -198,16 +198,18 @@ const init = () => {
     removeAllZombies()
 }
 
+// Resets basic settings while increasing player level. Prompts level up modal
 const levelUp = () => {
     init()
     playerLevel++
     updateWordList()
     levelModalHeaderEl.textContent = `Level Up`
     levelModalTextEl.textContent = `You held off that wave, but another with at least ${winConditions[playerLevel-1]} more zombies are coming!\
-    
+     
+     
     Ready for level ${playerLevel}?`
     continueEl.textContent = `Continue`
-    levelModal.style.display = "block" // Show the modal
+    levelModal.style.display = "block"
 }
 
 // Reset to initial settings
@@ -237,7 +239,7 @@ const handleInstructions = () => {
         })
     }
 
-    window.onclick = (event) => { // doesn't work if I click outside the modal div
+    window.onclick = (event) => {
         if (event.target === instructionsModal) {
             instructionsModal.style.display = "none"
                 buttonEl.forEach(button => {
