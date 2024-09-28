@@ -90,7 +90,7 @@
 
 @keyframes slide0 {
     0% {
-      transform: translate3d(-100, 0, 0);
+      transform: translate3d(-100, -20%, 0);
     }
     25% {
       transform: translate3d(-210%, -40%, 0);
@@ -102,13 +102,13 @@
       transform: translate3d(160%, -20%, 0);
     }
     100% {
-      transform: translate3d(-100, 0, 0);
+      transform: translate3d(-100, -20%, 0);
     }
   }
 
   @keyframes slide1 {
     0% {
-      transform: translate3d(-220%, 0, 0);
+      transform: translate3d(-220%, -20%, 0);
     }
     25% {
       transform: translate3d(260%, -20%, 0);
@@ -120,13 +120,13 @@
       transform: translate3d(130%, -80%, 0);
     }
     100% {
-      transform: translate3d(-220%, 0, 0);
+      transform: translate3d(-220%, -20%, 0);
     }
   }
 
   @keyframes slide2 {
     0% {
-      transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, -20%, 0);
     }
     25% {
       transform: translate3d(-40%, -30%, 0);
@@ -135,10 +135,10 @@
       transform: translate3d(0, -50%, 0);
     }
     75% {
-      transform: translate3d(-220%, 0, 0);
+      transform: translate3d(-220%, -20%, 0);
     }
     100% {
-      transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, -20%, 0);
     }
   }
 
@@ -189,7 +189,7 @@
       transform: translate3d(230%, -20%, 0);
     }
     75% {
-      transform: translate3d(15%, -5%, 0);
+      transform: translate3d(15%, -25%, 0);
     }
     100% {
       transform: translate3d(-350%, -30%, 0);
@@ -198,7 +198,7 @@
 
   @keyframes slide6 {
     0% {
-      transform: translate3d(-300%, -10%, 0);
+      transform: translate3d(-300%, -20%, 0);
     }
     25% {
       transform: translate3d(180%, -20%, 0);
@@ -210,43 +210,43 @@
       transform: translate3d(80%, -60%, 0);
     }
     100% {
-      transform: translate3d(-300%, -10%, 0);
+      transform: translate3d(-300%, -20%, 0);
     }
   }
 
   @keyframes slide7 {
     0% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, -20%, 0);
     }
     25% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, -20%, 0);
     }
     50% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, -20%, 0);
     }
     75% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, -20%, 0);
     }
     100% {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0, -20%, 0);
     }
   }
 
   @keyframes slide8 {
     0% {
-      transform: translate3d(-150%, 0, 0);
+      transform: translate3d(-150%, -20%, 0);
     }
     25% {
-      transform: translate3d(-250%, 0, 0);
+      transform: translate3d(-250%, -20%, 0);
     }
     50% {
-      transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, -20%, 0);
     }
     75% {
-      transform: translate3d(200%, 0, 0);
+      transform: translate3d(200%, -20%, 0);
     }
     100% {
-      transform: translate3d(-150%, 0, 0);
+      transform: translate3d(-150%, -20%, 0);
     }
   }
 
@@ -279,7 +279,7 @@
       transform: translate3d(65%, -55%, 0);
     }
     75% {
-      transform: translate3d(155%, -15%, 0);
+      transform: translate3d(155%, -25%, 0);
     }
     100% {
       transform: translate3d(-230%, -30%, 0);
@@ -315,7 +315,7 @@
       transform: translate3d(20%, -40%, 0);
     }
     75% {
-      transform: translate3d(10%, -10%, 0);
+      transform: translate3d(10%, -20%, 0);
     }
     100% {
       transform: translate3d(-450%, -40%, 0);
@@ -333,7 +333,7 @@
       transform: translate3d(150%, -40%, 0);
     }
     75% {
-      transform: translate3d(230%, -10%, 0);
+      transform: translate3d(230%, -20%, 0);
     }
     100% {
       transform: translate3d(50%, -60%, 0);
@@ -342,7 +342,7 @@
 
   @keyframes slide14 {
     0% {
-      transform: translate3d(-50%, -10%, 0);
+      transform: translate3d(-50%, -20%, 0);
     }
     25% {
       transform: translate3d(-30%, -20%, 0);
@@ -354,6 +354,6 @@
       transform: translate3d(-115%, -60%, 0);
     }
     100% {
-      transform: translate3d(-50%, -10%, 0);
+      transform: translate3d(-50%, -20%, 0);
     }
   }

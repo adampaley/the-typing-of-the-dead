@@ -17,7 +17,10 @@ body {
     background-position: center;
     display: flex;
     flex-direction: column;
-    color: white;
+    align-items: center;
+    justify-content: center;
+    color: #EAEAEA;
+    font-family: "Creepster", cursive;
 
 }
 
@@ -37,7 +40,6 @@ header {
     height: 15%;
     width: 69%;
     margin-top: 40px;
-    margin-left: 15.55%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -60,7 +62,15 @@ header {
 #information-space {
     height: 40%;
     width: 69%;
-    margin-left: 15.55%;
+}
+
+h2 {
+  text-shadow: 1px 1px 5px rgba(255, 0, 0, 0.8); 
+}
+
+p {
+  line-height: 1.5;
+  margin-top: 10px;
 }
 
 .modal {
@@ -78,26 +88,27 @@ header {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #4a4a4a;
     margin: 15% auto; 
     padding: 20px;
-    border: 1px solid #888;
+    border: 2px solid #d00;
+    border-radius: 10px;
     width: 80%; 
-    color: black;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+    color: #eaeaea;
 }
 
 .close-button {
-    color: #aaa;
+    color: #eaeaea;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .close-button:hover,
 .close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+    color: #ff4444;
 }
 
 #level-modal {
@@ -105,23 +116,29 @@ header {
 }
 
 .continue {
-  background-color: #4CAF50; 
-  color: white;
+  background-color: #a00; 
+  color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .continue:hover {
-  background-color: #45a049;
+  background-color: #c00;
+  transform: scale(1.05);
+}
+
+.continue:active {
+  background-color: #900;
+  transform: scale(0.95);
 }
 
 #game-display {
     height: 40%;
     width: 69%;
-    margin-left: 15.55%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -156,34 +173,80 @@ header {
 }
 
 #timer, #kill-count {
-  font-family: "Creepster", system-ui;
-  font-weight: 400;
-  font-size: 20px;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.7)
+}
+
+input[type="text"] {
+  width: 200px;
+  padding: 8px;
+  border: 2px solid #a00;
+  border-radius: 5px;
+  background-color: #4a4a4a;
+  color: #fff;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="text"]:focus {
+  background-color: #6a6a6a;
+  outline: none;
+  transform: scale(1.05);
 }
 
 #player-components {
     height: 5%;
     width: 69%;
-    margin-left: 15.55%;
     margin-bottom: 20px;
     padding: 0.75rem;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: baseline,;
+    align-items: baseline;
+    text-align: center;
+    margin: 20px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .game-buttons {
     width: 69%;
-    margin-left: 15.55%;
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.play:hover, .play:focus, .instructions:hover, .instructions:focus {
-    cursor: pointer; 
+.game-buttons button {
+  background-color: #a00; 
+  color: #fff;
+  border: 2px solid #d00; 
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.game-buttons button:hover {
+  background-color: #c00; 
+  transform: scale(1.1); 
+}
+
+.game-buttons button:active {
+  background-color: #900;
+  transform: scale(0.95); 
 }
 
 #player {
