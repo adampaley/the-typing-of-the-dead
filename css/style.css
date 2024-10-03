@@ -116,6 +116,10 @@ p {
   display: none; 
 }
 
+#settings-modal {
+  display: none;
+}
+
 .continue {
   background-color: #a00; 
   color: #fff;
@@ -268,12 +272,17 @@ footer {
     display: none;
 }
 
+
+.large-text {
+  font-size: 1.3em;
+}
+
 #small-screen {
     display: none;
 }
 
 @media (max-width: 768px) {
-    #instructions-modal, #level-modal, .game-buttons, #game-display, #player-components, #game-title {
+    #instructions-modal, #level-modal, #settings-modal, .game-buttons, #game-display, #player-components, #game-title {
         display: none;
     }
     

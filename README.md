@@ -23,10 +23,12 @@ Play here: `https://the-typing-of-the-dead-browser.netlify.app/`
 
 ## Technologies Used
 The following languages and technologies were implement to create this game: 
-* JS
-* HTML
-* CSS
-* DOM Manipulation
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+
 
 ## Attributions
 * Copyright Free Background Audio (not featured in deployed version): "Nebula Nights" - Adi Goldstein https://uppbeat.io/browse/artist/adi-goldstein 
@@ -41,7 +43,6 @@ Potential features to be added on:
 * Settings
     * Limit Animations
     * Large Text
-    * Mute/Unmute
 * Zombie Timer / Player Lives
 * Local High Scores
 * Global High Score

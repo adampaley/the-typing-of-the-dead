@@ -16,18 +16,27 @@
             <h1 id="game-title">The Typing of the Dead</h1>
         </header>
         <section id="information-space">
-            <div class="modal" id="instructions-modal">
-                <div class="modal-content">
-                    <span class="close-button">&times;</span>
-                    <h2>How to Play</h2>
-                    <p>It's the night of the living dead! And the only way to beat them is by having brains too big to eat. <br><br><br> Fight back against the zombies by typing in whatever word appears with the zombie and rack up kills to beat the game.<br><br><br>Each kills rewards you with some time back!<br><br><br> Take too long and you'll run out of time.</p>
-                </div>
-            </div>
             <div class="modal" id="level-modal">
                 <div class="modal-content">
                     <h2 id="modal-header"></h2>
                     <p id="modal-text"></p>
                     <button type="button" class="continue">Continue</button>
+                </div>
+            </div>
+            <div class="modal" id="instructions-modal">
+                <div class="modal-content">
+                    <span class="close-button" id="close-instructions">&times;</span>
+                    <h2>How to Play</h2>
+                    <p>It's the night of the living dead! And the only way to beat them is by having brains too big to eat. <br><br><br> Fight back against the zombies by typing in whatever word appears with the zombie and rack up kills to beat the game.<br><br><br>Each kills rewards you with some time back!<br><br><br> Take too long and you'll run out of time.</p>
+                </div>
+            </div>
+            <div class="modal" id="settings-modal">
+                <div class="modal-content">
+                    <span class="close-button" id="close-settings">&times;</span>
+                    <h2>Customize Game Play</h2>
+                    <label>
+                        <input type="checkbox" id="largeTextCheckbox"> Enable Larger Text
+                    </label>
                 </div>
             </div>
             <div id="small-screen">Zombies are immune to Tablet or Mobile devices.</div>
@@ -49,6 +58,7 @@
             <button type="button" class="play">▶ Play</button>
             <button type="button" class="reset invisible">🔄 Reset</button>
             <button type="button" class="instructions">📄 Instructions</button>
+            <button type="button" class="settings">⚙️ Settings</button>
         </footer>
     </body>
 </html>

@@ -20,6 +20,7 @@ const killCountEl = document.querySelector("#kill-count")
 const timerEl = document.querySelector("#timer")
 const buttonEl = document.querySelectorAll("button")
 const instructionsModal = document.querySelector("#instructions-modal") 
+const settingsModal = document.querySelector("#settings-modal")
 const levelModal = document.querySelector("#level-modal")
 const levelModalHeaderEl = document.querySelector("#modal-header")
 const levelModalTextEl = document.querySelector("#modal-text")
@@ -87,7 +88,10 @@ const respawnZombie = () => {
     // Make zombie word visible
     const zombieText = document.createElement("div")
     zombieText.classList.add("zombie-text")
-    zombieText.textContent = zombieWord
+    if (document.getElementById("largeTextCheckbox").checked) {
+        zombieText.style.fontSize = "40px";
+    }
+    zombieText.textContent = zombieWord;
 
     // Attach sprite and word to HTML element
     zombieDiv.appendChild(zombieImg)
@@ -97,11 +101,10 @@ const respawnZombie = () => {
     Object.assign(zombieDiv.style, {
         position: "absolute",
     })
-
+    
     // Place in container
     zombieCon.appendChild(zombieDiv)
 }
-
 
 // Set number of zombies equal to game level/difficulty
 const spawnZombie = () => {
@@ -251,27 +254,70 @@ const handleReset = () => {
     init()
 }
 
+const closeModal = (modal) => {
+    modal.style.display = "none"     
+    buttonEl.forEach(button => {
+        button.disabled = false
+    })
+}
+
 // Show game instructions
 const handleInstructions = () => {
     instructionsModal.style.display = "block"
     levelModal.style.display = "none"
+    settingsModal.style.display = "none"
 
     buttonEl.forEach(button => {
         button.disabled = true
     })
 
-    const closeButton = document.querySelector(".close-button")
-    closeButton.onclick = () => {
-        instructionsModal.style.display = "none"        
-        buttonEl.forEach(button => {
-            button.disabled = false
-        })
-    }
+    const closeInstructionsButton = document.querySelector("#close-instructions");
+    closeInstructionsButton.onclick = () => closeModal(instructionsModal)
 
     window.onclick = (event) => {
         if (event.target === instructionsModal) {
             instructionsModal.style.display = "none"
-                buttonEl.forEach(button => {
+            buttonEl.forEach(button => {
+                button.disabled = false
+            })
+        }
+    }
+}
+
+const handleSettings = () => {
+    settingsModal.style.display = "block"    
+    levelModal.style.display = "none"
+    instructionsModal.style.display = "none"
+
+    buttonEl.forEach(button => {
+        button.disabled = true
+    })
+
+    const largeTextCheckbox = document.getElementById("largeTextCheckbox")
+    const stopAnimationCheckbox = document.getElementById("stopAnimationCheckbox")
+
+    largeTextCheckbox.addEventListener("change", () => {
+        document.body.classList.toggle("large-text", largeTextCheckbox.checked)
+    })
+
+    const updateZombieTextSize = () => {
+        const zombies = document.querySelectorAll(".zombie-text")
+        zombies.forEach(zombieText => {
+            zombieText.style.fontSize = largeTextCheckbox.checked ? "40px" : "initial"
+        })
+    }
+
+    largeTextCheckbox.addEventListener("change", () => {
+        updateZombieTextSize()
+    })
+
+    const closeSettingsButton = document.querySelector("#close-settings")
+    closeSettingsButton.onclick = () => closeModal(settingsModal)
+
+    window.onclick = (event) => {
+        if (event.target === settingsModal) {
+            settingsModal.style.display = "none"
+            buttonEl.forEach(button => {
                 button.disabled = false
             })
         }
@@ -293,6 +339,9 @@ const handleButtonClicks = (event) => {
             break
         case button.classList.contains("continue"):
             handleContinue()
+            break
+        case button.classList.contains("settings"):
+            handleSettings()
             break
         case button.classList.contains("mute"):
             handleMute()
