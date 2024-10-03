@@ -38,10 +38,10 @@ The following languages and technologies were implement to create this game:
 
 ## Next Steps
 Potential features to be added on:
-* Prevent Zombies from overlaying
 * Settings
     * Limit Animations
     * Large Text
     * Mute/Unmute
 * Zombie Timer / Player Lives
-* High Scores
+* Local High Scores
+* Global High Score
