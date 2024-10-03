@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The Typing of the Dead</title>
+        <link rel="shortcut icon" href="./assets/zombie-head.jpg" type="image/x-icon">
         <link rel="stylesheet" href="./css/animation.css">
         <link rel="stylesheet" href="./css/style.css">
         <script defer src="./js/word-bank.js"></script>
@@ -38,7 +39,11 @@
         <section id="player-components">
             <div id="timer">Time: 30s</div>
             <input type="text" id="player" placeholder="Type Here"></input>
-            <div id="kill-count">Kill Count: 0</div>
+            <section id="right-player-components">
+                <div id="kill-count">Kill Count: 0</div>
+                <button type="button" class="mute">🔊</button>
+                <button type="button" class="unmute invisible" type="button">🔇</button>    
+            </section>
         </section>
         <footer class="game-buttons">
             <button type="button" class="play">▶ Play</button>

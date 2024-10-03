@@ -1,6 +1,8 @@
 // Global Game Constants and Variables
 const zombieMovements = ["position0", "position1", "position2", "position3", "position4", "position5", "position6", "position7", "position8", "position9", "position10", "position11", "position12", "position13", "position14"]
 const winConditions = [10, 20, 30, 40] // # of Zombie Words in defeatedZombieWords
+const gameAudio = new Audio("./assets/audio/nebula-nights.mp3")
+const deadZombie = new Audio("./assets/audio/zombie-groan.wav")
 let playerLevel = 1
 wordList = []
 let defeatedZombieWords = []
@@ -23,6 +25,25 @@ const levelModalHeaderEl = document.querySelector("#modal-header")
 const levelModalTextEl = document.querySelector("#modal-text")
 const continueEl = document.querySelector(".continue")
 
+// default global Audio settings
+gameAudio.volume = 0.3
+gameAudio.loop = true
+deadZombie.volume = 0.4
+
+// Remove sounds
+const handleMute = () => {
+    gameAudio.volume = 0
+    deadZombie.volume = 0
+    document.querySelector(".unmute").classList.remove("invisible")
+    document.querySelector(".mute").classList.add("invisible")
+}
+// Restore sounds
+const handleUnmute = () => {
+    gameAudio.volume = 0.3
+    deadZombie.volume = 0.4
+    document.querySelector(".mute").classList.remove("invisible")
+    document.querySelector(".unmute").classList.add("invisible")
+}
 // Dynamically update word list when called whenever player level changes
 const updateWordList = () => {
     const wordObj = wordBank.find((wordLevel) => wordLevel.level === playerLevel)
@@ -54,7 +75,7 @@ const respawnZombie = () => {
     const zombieImg = document.createElement("img")
     zombieImg.classList.add("zombie-render")
     zombieImg.src = "./assets/generic-zombie-sprite.webp"
-    zombieImg.art = "Zombie featuring the word: "
+    zombieImg.alt = "Zombie featuring the word: "
 
     // Attach zombie word as attribute
     zombieWord = getRandomWord()
@@ -98,6 +119,7 @@ const removeZombie = (zombieWord) => {
     zombieEls.forEach((zombie) => {
         if (zombie.getAttribute('data-word') === zombieWord) {
             zombie.remove()
+            deadZombie.play()
             playerEl.value = ""
         }
     })
@@ -147,6 +169,7 @@ const handlePlay = () => {
     Can you fight them off?`
     continueEl.textContent = `Start`
     levelModal.style.display = "block" 
+    gameAudio.play()
     document.querySelector(".reset").classList.remove("invisible")
     document.querySelector(".play").classList.add("invisible")
 } 
@@ -264,6 +287,12 @@ const handleButtonClicks = (event) => {
             break
         case button.classList.contains("continue"):
             handleContinue()
+            break
+        case button.classList.contains("mute"):
+            handleMute()
+            break
+        case button.classList.contains("unmute"):
+            handleUnmute()
             break
         default:
             return

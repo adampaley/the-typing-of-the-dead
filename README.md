@@ -32,12 +32,13 @@ The following languages and technologies were implement to create this game:
 * Copyright Free Background Audio (not featured in deployed version): "Nebula Nights" - Adi Goldstein https://uppbeat.io/browse/artist/adi-goldstein 
 * Pixel Art Zombie Sprite: https://www.reddit.com/r/PixelArt/comments/108e8to/zombie_sprite/
 * AI Generated Background Image: https://myninja.ai/ 
+* Zombie Death Groan: https://freesound.org/people/jayroo9/sounds/541616/ 
+* Zombie Head FavIcon = <a href="https://www.vecteezy.com/free-vector/aggression">Aggression Vectors by Vecteezy</a>
 
 
 ## Next Steps
 Potential features to be added on:
 * Prevent Zombies from overlaying
-* Background Audio
 * Settings
     * Limit Animations
     * Large Text

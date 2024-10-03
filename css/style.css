@@ -211,6 +211,13 @@ input[type="text"]:focus {
     margin: 20px;
 }
 
+#right-player-components {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+}
+
 footer {
   display: flex;
   justify-content: center;
@@ -225,7 +232,7 @@ footer {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.game-buttons button {
+.game-buttons button, .mute, .unmute {
   background-color: #a00; 
   color: #fff;
   border: 2px solid #d00; 
@@ -238,12 +245,16 @@ footer {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.game-buttons button:hover {
+.mute, .unmute {
+  font-size: 1em;
+  padding: 10px;
+}
+.game-buttons button:hover, .mute:hover, .unmute:hover {
   background-color: #c00; 
   transform: scale(1.1); 
 }
 
-.game-buttons button:active {
+.game-buttons button:active, .mute:active, .unmute:active {
   background-color: #900;
   transform: scale(0.95); 
 }
