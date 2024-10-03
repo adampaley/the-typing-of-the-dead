@@ -1,88 +1,88 @@
-.position0 {
+[zombie-movement="position0"] {
     animation-name: slide0;
     animation-duration: 5s;
     animation-iteration-count: infinite;
 }
 
-.position1 {
+[zombie-movement="position1"] {
     animation-name: slide1;
     animation-duration: 30s;
     animation-iteration-count: infinite;
 }
 
-.position2 {
+[zombie-movement="position2"] {
     animation-name: slide2;
     animation-duration: 20s;
     animation-iteration-count: infinite;
 }
 
-.position3 {
+[zombie-movement="position3"] {
     animation-name: slide3;
     animation-duration: 20s;
     animation-iteration-count: infinite;
 }
 
-.position4 {
+[zombie-movement="position4"] {
     animation-name: slide4;
     animation-duration: 15s;
     animation-iteration-count: infinite;
 }
 
-.position5 {
+[zombie-movement="position5"] {
     animation-name: slide5;
     animation-duration: 45s;
     animation-iteration-count: infinite;
 }
 
-.position6 {
+[zombie-movement="position6"] {
     animation-name: slide6;
     animation-duration: 60s;
     animation-iteration-count: infinite;
 }
 
-.position7 {
+[zombie-movement="position7"] {
     animation-name: slide7;
     animation-duration: 10s;
     animation-iteration-count: infinite;
 }
 
-.position8 {
+[zombie-movement="position8"] {
     animation-name: slide8;
     animation-duration: 40s;
     animation-iteration-count: infinite;
 }
 
-.position9 {
+[zombie-movement="position9"] {
     animation-name: slide9;
     animation-duration: 15s;
     animation-iteration-count: infinite;
 }
 
-.position10 {
+[zombie-movement="position10"] {
     animation-name: slide10;
     animation-duration: 10s;
     animation-iteration-count: infinite;
 }
 
-.position11 {
+[zombie-movement="position11"] {
     animation-name: slide11;
     animation-duration: 45s;
     animation-iteration-count: infinite;
 }
 
-.position12 {
+[zombie-movement="position12"] {
     animation-name: slide12;
     animation-duration: 3s;
     animation-iteration-count: infinite;
 }
 
-.position13 {
+[zombie-movement="position13"] {
     animation-name: slide13;
     animation-duration: 20s;
     animation-iteration-count: infinite;
 }
 
-.position14 {
+[zombie-movement="position14"] {
     animation-name: slide14;
     animation-duration: 25s;
     animation-iteration-count: infinite;

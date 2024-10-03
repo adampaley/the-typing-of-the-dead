@@ -25,7 +25,7 @@ const levelModalHeaderEl = document.querySelector("#modal-header")
 const levelModalTextEl = document.querySelector("#modal-text")
 const continueEl = document.querySelector(".continue")
 
-// default global Audio settings
+// Default global Audio settings
 gameAudio.volume = 0.3
 gameAudio.loop = true
 deadZombie.volume = 0.4
@@ -69,7 +69,10 @@ const respawnZombie = () => {
     zombieDiv.classList.add("zombie")
 
     // Set zombie animation
-    zombieDiv.classList.add(zombieMovements[Math.floor(Math.random()*zombieMovements.length)])
+    const zombieMoves = zombieMovements[Math.floor(Math.random()*zombieMovements.length)]
+    zombieDiv.setAttribute("zombie-movement", zombieMoves)
+    let zombieMovesIndex = zombieMovements.indexOf(zombieMoves)
+    zombieMovements.splice(zombieMovesIndex, 1)
 
     // Make zombie sprite
     const zombieImg = document.createElement("img")
@@ -79,7 +82,7 @@ const respawnZombie = () => {
 
     // Attach zombie word as attribute
     zombieWord = getRandomWord()
-    zombieDiv.setAttribute('data-word', zombieWord)
+    zombieDiv.setAttribute("data-word", zombieWord)
 
     // Make zombie word visible
     const zombieText = document.createElement("div")
@@ -110,14 +113,16 @@ const spawnZombie = () => {
 // Remove zombies at conclusion of game play
 const removeAllZombies = () => {
     const zombieEls = document.querySelectorAll(".zombie") 
-    zombieEls.forEach(zombie => zombie.remove())
+    zombieEls.forEach(zombie => {
+        zombieMovements.push(zombie.getAttribute("zombie-movement"))
+        zombie.remove()})
 }
 
 // Ensures any zombie can be defeated at any time, resets player input
 const removeZombie = (zombieWord) => {
     const zombieEls = document.querySelectorAll(".zombie")
     zombieEls.forEach((zombie) => {
-        if (zombie.getAttribute('data-word') === zombieWord) {
+        if (zombie.getAttribute("data-word") === zombieWord) {
             zombie.remove()
             deadZombie.play()
             playerEl.value = ""
@@ -136,6 +141,7 @@ const killZombie = () => {
             killCountEl.textContent = `Kill Count: ${killCount}`
             timer += timeBonus // reward for beating a zombie
             defeatedZombieWords.push(firepower)
+            zombieMovements.push(zombie.getAttribute("zombie-movement"))
             removeZombie(firepower)
             renderOutcome()
         }

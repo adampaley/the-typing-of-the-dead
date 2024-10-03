@@ -273,7 +273,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-    #instructions-modal, .game-buttons, #game-display, #player-components, #game-title {
+    #instructions-modal, #level-modal, .game-buttons, #game-display, #player-components, #game-title {
         display: none;
     }
     
